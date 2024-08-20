@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceo12pltbj58t"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_2kvsq"]
+[ext_resource type="Texture2D" uid="uid://c8ccqgnykdmn3" path="res://assets/backgrounds/game_background_1/game_background_1.png" id="1_yerpd"]
+[ext_resource type="AudioStream" uid="uid://bm6nfamt0n6gg" path="res://assets/sound/Farm Frolics.ogg" id="2_ffipo"]
+[ext_resource type="LabelSettings" uid="uid://dt5l8fet32cyd" path="res://assets/font_styles/lg_pk_96.tres" id="2_pdkry"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2kvsq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yerpd")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.192157, 0.67451)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -11.5
+offset_right = 39.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Fox Antics"
+label_settings = ExtResource("2_pdkry")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ffipo")
+volume_db = -14.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 25
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5

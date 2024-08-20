@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8gv7s65r8kgl"]
+
+[ext_resource type="Script" path="res://scenes/parallax_layer/parallax_layer.gd" id="1_k5tx4"]
+
+[node name="ParallaxLayer" type="ParallaxLayer"]
+script = ExtResource("1_k5tx4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
