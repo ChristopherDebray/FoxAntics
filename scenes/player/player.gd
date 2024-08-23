@@ -10,6 +10,7 @@ class_name Player
 @onready var invicible_player: AnimationPlayer = $InviciblePlayer
 @onready var invicible_timer: Timer = $InvicibleTimer
 @onready var hurt_timer: Timer = $HurtTimer
+@onready var player_cam: Camera2D = $PlayerCam
 
 const FALLEN_OFF: float = 700.0
 const GRAVITY: float = 900.00
@@ -32,6 +33,7 @@ func _ready():
 
 func deferred_setup() -> void:
 	SignalManager.on_level_started.emit(lives)
+	SignalManager.on_level_completed.connect(on_level_completed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -147,9 +149,7 @@ func reduce_lives(damage: int) -> bool:
 	SignalManager.on_player_hit.emit(lives)
 	if lives <= 0:
 		SignalManager.on_game_over.emit()
-		set_physics_process(false)
-		animation_player.stop()
-		invicible_player.stop()
+		stop_player()
 		return false
 	return true
 
@@ -159,7 +159,18 @@ func fallen_off() -> void:
 	
 	reduce_lives(lives)
 
-func _on_hit_box_entered(area):
+func stop_player() -> void:
+	set_physics_process(false)
+	animation_player.stop()
+	invicible_player.stop()
+
+func set_camera_limits(lim_max: Vector2, lim_min: Vector2):
+	player_cam.limit_bottom = lim_min.y
+	player_cam.limit_left = lim_min.x
+	player_cam.limit_top = lim_max.y
+	player_cam.limit_right = lim_max.x
+
+func _on_hit_box_entered(_area):
 	apply_damager()
 
 func _on_invicible_timer_timeout() -> void:
@@ -168,3 +179,6 @@ func _on_invicible_timer_timeout() -> void:
 
 func _on_hurt_timer_timeout() -> void:
 	set_state(PLAYER_STATES.IDLE)
+
+func on_level_completed() -> void:
+	stop_player()

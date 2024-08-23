@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpfxe3oymv0j5"]
+[gd_scene load_steps=7 format=3 uid="uid://cpfxe3oymv0j5"]
 
 [ext_resource type="LabelSettings" uid="uid://bcrgbis4nbqwn" path="res://assets/font_styles/lg_wh_48.tres" id="1_1qeb1"]
 [ext_resource type="Texture2D" uid="uid://vjncgo1ciuvg" path="res://assets/items/pixel heart 2.png" id="1_axewr"]
 [ext_resource type="Script" path="res://scenes/Ui/hud/hud.gd" id="1_weh7c"]
 [ext_resource type="LabelSettings" uid="uid://iiiavafsg3kt" path="res://assets/font_styles/lg_bl_64.tres" id="3_s1tqd"]
 [ext_resource type="LabelSettings" uid="uid://bsgenvoy6njrb" path="res://assets/font_styles/lg_wh_24.tres" id="4_fq1ut"]
+[ext_resource type="AudioStream" uid="uid://bpech32ni6s7w" path="res://assets/sound/game_over.ogg" id="6_1ltw6"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -122,6 +123,16 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="ColorRect/VBGameOver"]
 layout_mode = 2
-text = "Press jump for next level"
+text = "Press jump for main menu"
 label_settings = ExtResource("4_fq1ut")
 horizontal_alignment = 1
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1ltw6")
+volume_db = -15.0
+
+[node name="ContinueTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="ContinueTimer" to="." method="_on_continue_timer_timeout"]

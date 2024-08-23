@@ -47,7 +47,6 @@ var mirror_x: float = 1440.0
 var sprite_scale: Vector2 = Vector2(0.75, 0.75)
 
 func _ready():
-	print("Level Number: ", level_number)
 	add_backgrounds()
 
 func get_increment() -> float:

@@ -12,11 +12,6 @@ func _ready() -> void:
 	SignalManager.on_create_bullet.connect(on_create_bullet)
 	SignalManager.on_create_object.connect(on_create_object)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func on_create_bullet(
 	pos: Vector2,
 	dir: Vector2,

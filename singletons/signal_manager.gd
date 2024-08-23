@@ -19,4 +19,5 @@ signal on_pickup_hit(points: int)
 signal on_player_hit(lives: int)
 signal on_score_updated(points: int)
 signal on_level_started(lives: int)
+signal on_level_completed
 signal on_game_over

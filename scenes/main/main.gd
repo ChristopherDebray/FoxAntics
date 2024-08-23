@@ -8,6 +8,10 @@ func _ready() -> void:
 	clear_scores()
 	set_scores()
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("jump"):
+		GameManager.load_next_level_scene()
+
 func set_scores() -> void:
 	for score in ScoreManager.get_score():
 		var label: Label = HIGH_SCORE_LABEL.instantiate()

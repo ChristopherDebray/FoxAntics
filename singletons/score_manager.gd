@@ -15,7 +15,6 @@ func _ready() -> void:
 
 func update_score(points: int):
 	_score += points
-	print("SCORE")
 	SignalManager.on_score_updated.emit(_score)
 
 func on_game_over() -> void:
@@ -50,13 +49,12 @@ func load_scores_history():
 	else:
 		save_score()
 	_scores_history.sort_custom(compare_scores)
-	print(_scores_history)
 
 func compare_scores(a, b) -> bool:
 	return b.score < a.score
 
 func get_score_history() -> Array[int]:
 	var high_scores: Array[int] = []
-	for score in _scores_history:
+	for score in _scores_history.slice(0, MAX_SCORES_KEEP):
 		high_scores.push_back(int(score.score))
 	return high_scores

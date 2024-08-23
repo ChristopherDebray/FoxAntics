@@ -31,6 +31,6 @@ func _on_life_timer_timeout() -> void:
 	die()
 
 
-func _on_fruit_pickup(area: Area2D) -> void:
+func _on_fruit_pickup(_area: Area2D) -> void:
 	SignalManager.on_pickup_hit.emit(points)
 	die()

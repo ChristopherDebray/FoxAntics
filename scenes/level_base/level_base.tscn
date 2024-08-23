@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ce2xrf8jnsexj"]
+[gd_scene load_steps=12 format=3 uid="uid://ce2xrf8jnsexj"]
 
 [ext_resource type="Texture2D" uid="uid://dvyogqgos2kws" path="res://assets/tiles/Terrain (16x16).png" id="1_2yjnm"]
 [ext_resource type="Script" path="res://scenes/level_base/level_base.gd" id="1_3r5i5"]
 [ext_resource type="PackedScene" uid="uid://dk5ll5h4b2y23" path="res://scenes/player/player.tscn" id="3_73fjk"]
+[ext_resource type="AudioStream" uid="uid://27jipg4wo1jg" path="res://assets/sound/Flowing Rocks.ogg" id="9_kkma3"]
 [ext_resource type="PackedScene" uid="uid://cpfxe3oymv0j5" path="res://scenes/Ui/hud/hud.tscn" id="10_thtl3"]
 [ext_resource type="PackedScene" uid="uid://0vca6up1uh7f" path="res://scenes/object_maker/object_maker.tscn" id="10_yx0pg"]
 [ext_resource type="PackedScene" uid="uid://b27yc7rl8dvcy" path="res://scenes/boss/boss.tscn" id="12_r7jui"]
@@ -292,6 +293,8 @@ sources/0 = SubResource("TileSetAtlasSource_tgxs1")
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_3r5i5")
+camera_max = Vector2(1525, 0)
+camera_min = Vector2(0, 600)
 
 [node name="ObjectMaker" parent="." instance=ExtResource("10_yx0pg")]
 
@@ -324,3 +327,8 @@ position = Vector2(1025, 544)
 
 [node name="ScrollingBg" parent="." instance=ExtResource("14_uwao7")]
 level_number = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_kkma3")
+volume_db = -10.0
+autoplay = true

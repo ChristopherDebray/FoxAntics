@@ -20,5 +20,5 @@ func setup(pos: Vector2, dir: Vector2, speed: float, life_span: float):
 	_life_span = life_span
 	global_position = pos
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	queue_free()

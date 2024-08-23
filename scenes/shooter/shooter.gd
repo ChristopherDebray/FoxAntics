@@ -15,7 +15,7 @@ var _can_shoot: bool = true
 func _ready() -> void:
 	shoot_timer.wait_time = shoot_delay
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func shoot(dir: Vector2) -> void:
